@@ -6,16 +6,15 @@ import java.util.Scanner;
 public class Student {
 
     public static void main(String[] args) {
-        HashMap<String, Integer> studentList = new HashMap<String, Integer>();
-        Scanner input = new Scanner(System.in);     
+        HashMap<Integer, String> studentList = new HashMap<Integer,String>();
+        Scanner input = new Scanner(System.in);
         
         System.out.println("1) Login");
         System.out.println("2) Register");
         System.out.println("3) Exit");
         System.out.print("Enter your choice: ");
         Integer choice = Integer.parseInt(input.nextLine());
-        studentList.put("june",55);
-
+        
         do
         {
             if(choice == 1){
@@ -24,24 +23,21 @@ public class Student {
                 String name = input.nextLine();
                 System.out.print("Enter your id number: ");
                 Integer idNumber = Integer.parseInt(input.nextLine());
-                if(studentList.containsKey(name)){
+                if(studentList.containsKey(idNumber)){
                     break;
                 }
                 else{
                     System.out.println("You are not registered you must register first.");
-                    
+
                 }
-                //studentList.putIfAbsent(name, idNumber);
             }else if (choice == 2){
                 System.out.println("Registering ");
                 System.out.print("Enter your name: ");
                 String name = input.nextLine();
                 System.out.print("Enter your id number: ");
                 Integer idNumber = Integer.parseInt(input.nextLine());
-                //studentList.put(name,idNumber);
-                studentList.putIfAbsent(name, idNumber);
+                studentList.putIfAbsent(idNumber,name);
         }
-        studentList.put("june",66);
         System.out.println(studentList);
         System.out.println("1) Login");
         System.out.println("2) Register");
@@ -49,6 +45,6 @@ public class Student {
         System.out.print("Enter your choice: ");
         choice = Integer.parseInt(input.nextLine());
     }while(choice != 3);
-        System.out.println("After do while" + studentList);
+        System.out.println("Student list: " + studentList);
     }
 }
