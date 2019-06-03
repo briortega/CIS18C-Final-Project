@@ -1,6 +1,7 @@
 package student;
 
 import java.util.HashMap;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Student {
@@ -12,7 +13,7 @@ public class Student {
 
         System.out.println("1) Login");
         System.out.println("2) Register & show list");
-        System.out.println("3) Search for Student");
+        System.out.println("3) Show list of Students & Search");
         System.out.println("4) Exit");
         System.out.print("Enter your choice: ");
         Integer choice = Integer.parseInt(input.nextLine());
@@ -38,17 +39,25 @@ public class Student {
                 String name = input.nextLine();
                 System.out.print("Enter your id number: ");
                 Integer idNumber = Integer.parseInt(input.nextLine());
+                //if(studentList.containsKey(idNumber)){
+                  //  System.out.println("Id Number already registered.");
+                    //System.out.print("Enter another id number: ");
+                    //idNumber = Integer.parseInt(input.nextLine());
+                //}
+                do{
+                    System.out.println("Id Number already registered.");
+                    System.out.print("Enter another id number: ");
+                    idNumber = Integer.parseInt(input.nextLine());
+                }while(studentList.containsValue(idNumber));
                 studentList.putIfAbsent(idNumber,name);
-                //System.out.println(users.addUser(studentList.get(name), studentList.get(idNumber)));
                 System.out.println(users.addUser(name, idNumber));
+            
+            }else if (choice == 3){
                 System.out.println("Displaying Users.");
         	System.out.println(users.displayUsers());
                 System.out.println("Displaying users after sorting by idNumber.");
                 users.sortUsers();
-                System.out.println(users.displayUsers());
-            }else if (choice == 3){
-               // Students users = new Students();
-                //System.out.println(users.addUser(studentList.get(name), studentList.get(idNumber)));
+                System.out.println(users.displayUsers());  
                 System.out.print("Searching for user with id: ");
                 Integer idSearch = Integer.parseInt(input.nextLine());
                 System.out.println("User is : " + users.searchById(idSearch));
@@ -56,7 +65,7 @@ public class Student {
         System.out.println(studentList);
         System.out.println("1) Login");
         System.out.println("2) Register & show list");
-        System.out.println("3) Search for Student");
+        System.out.println("3) Show list of Students & Search");
         System.out.println("4) Exit");
         System.out.print("Enter your choice: ");
         choice = Integer.parseInt(input.nextLine());
