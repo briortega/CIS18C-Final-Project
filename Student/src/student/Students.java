@@ -6,10 +6,6 @@ public class Students {
     protected String name;
     protected Integer idNumber;
 
-    //public void Students(String name, String email, Integer idNumber){
-    //    this.name = name;
-  //      this.idNumber = idNumber;
-    //}
     private Students(String name, int idNumber) {
         this.name = name;
         this.idNumber = idNumber;
